@@ -1,155 +1,194 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#FFF">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="alternate" type="application/rss+xml" title="Valor's Rock Room" href="https://valorvie.github.io/rss.xml" />
-<link rel="alternate" type="application/atom+xml" title="Valor's Rock Room" href="https://valorvie.github.io/atom.xml" />
-<link rel="alternate" type="application/json" title="Valor's Rock Room" href="https://valorvie.github.io/feed.json" />
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"valorvie.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-<link rel="stylesheet" href="/css/app.css?v=0.2.5">
-
-  
+  <meta name="description" content="Hexo + Github pages BlogDockerfile1234567891011121314151617# 指定基礎鏡像FROM node:15.14.0-alpine3.13# 維護者資訊MAINTAINER Valor &lt;user@mail.com&gt;# 執行安裝的目錄WORKDIR &#x2F;usr&#x2F;blog# 安裝 bash git openssh 以及 c 的編譯工具RU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo + Github pages Blog">
+<meta property="og:url" content="https://valorvie.github.io/2023/04/07/Hexo-Github-pages-Blog/index.html">
+<meta property="og:site_name" content="Valor&#39;s Rock Room">
+<meta property="og:description" content="Hexo + Github pages BlogDockerfile1234567891011121314151617# 指定基礎鏡像FROM node:15.14.0-alpine3.13# 維護者資訊MAINTAINER Valor &lt;user@mail.com&gt;# 執行安裝的目錄WORKDIR &#x2F;usr&#x2F;blog# 安裝 bash git openssh 以及 c 的編譯工具RU">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-04-07T05:39:50.000Z">
+<meta property="article:modified_time" content="2023-04-07T05:41:49.437Z">
+<meta property="article:author" content="ValorVie">
+<meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://valorvie.github.io/2023/04/07/Hexo-Github-pages-Blog/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
 
-  <title>
-Hexo + Github pages Blog |
-Yume Shoka = Valor's Rock Room</title>
-<meta name="generator" content="Hexo 6.3.0"></head>
+  <title>Hexo + Github pages Blog | Valor's Rock Room</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div id="loading">
-    <div class="cat">
-      <div class="body"></div>
-      <div class="head">
-        <div class="face"></div>
-      </div>
-      <div class="foot">
-        <div class="tummy-end"></div>
-        <div class="bottom"></div>
-        <div class="legs left"></div>
-        <div class="legs right"></div>
-      </div>
-      <div class="paw">
-        <div class="hands left"></div>
-        <div class="hands right"></div>
-      </div>
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
-  <div id="container">
-    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="inner">
-        <div id="brand">
-          <div class="pjax">
-          
-  <h1 itemprop="name headline">Hexo + Github pages Blog
-  </h1>
-  
-<div class="meta">
-  <span class="item" title="創建時間：2023-04-07 13:39:50">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <span class="text">發表於</span>
-    <time itemprop="dateCreated datePublished" datetime="2023-04-07T13:39:50+08:00">2023-04-07</time>
-  </span>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Valor's Rock Room</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
-          </div>
-        </div>
-        <nav id="nav">
-  <div class="inner">
-    <div class="toggle">
-      <div class="lines" aria-label="切換導航欄">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-      </div>
-    </div>
-    <ul class="menu">
-      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
-    </ul>
-    <ul class="right">
-      <li class="item theme">
-        <i class="ic i-sun"></i>
-      </li>
-      <li class="item search">
-        <i class="ic i-search"></i>
-      </li>
-    </ul>
-  </div>
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
 </nav>
 
-      </div>
-      <div id="imgs" class="pjax">
-        <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewr8iypj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicliierfjj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
-        </ul>
-      </div>
-    </header>
-    <div id="waves">
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-        <defs>
-          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g class="parallax">
-          <use xlink:href="#gentle-wave" x="48" y="0" />
-          <use xlink:href="#gentle-wave" x="48" y="3" />
-          <use xlink:href="#gentle-wave" x="48" y="5" />
-          <use xlink:href="#gentle-wave" x="48" y="7" />
-        </g>
-      </svg>
-    </div>
-    <main>
-      <div class="inner">
-        <div id="main" class="pjax">
-          
-  <div class="article wrap">
-    
-<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-<i class="ic i-home"></i>
-<span><a href="/">首頁</a></span>
+
+
+
 </div>
+    </header>
 
-    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-TW">
-  <link itemprop="mainEntityOfPage" href="https://valorvie.github.io/2023/04/07/Hexo-Github-pages-Blog/">
-
-  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="image" content="/images/avatar.jpg">
-    <meta itemprop="name" content="ValorVie">
-    <meta itemprop="description" content=", ">
-  </span>
-
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Valor's Rock Room">
-  </span>
-
-  <div class="body md" itemprop="articleBody">
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-    <h1 id="Hexo-Github-pages-Blog"><a href="#Hexo-Github-pages-Blog" class="headerlink" title="Hexo + Github pages Blog"></a>Hexo + Github pages Blog</h1><h4 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定基礎鏡像</span></span><br><span class="line"><span class="string">FROM</span> <span class="string">node:15.14.0-alpine3.13</span></span><br><span class="line"><span class="comment"># 維護者資訊</span></span><br><span class="line"><span class="string">MAINTAINER</span> <span class="string">Valor</span> <span class="string">&lt;user@mail.com&gt;</span></span><br><span class="line"><span class="comment"># 執行安裝的目錄</span></span><br><span class="line"><span class="string">WORKDIR</span> <span class="string">/usr/blog</span></span><br><span class="line"><span class="comment"># 安裝 bash git openssh 以及 c 的編譯工具</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">apk</span> <span class="string">add</span> <span class="string">bash</span> <span class="string">git</span> <span class="string">openssh</span></span><br><span class="line"><span class="comment"># 設置容器時區為台北，不然發布文章的時間是國際時間，也就是比我們晚 8 個小時</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">apk</span> <span class="string">--no-cache</span> <span class="string">add</span> <span class="string">tzdata</span> <span class="string">&amp;&amp;</span> <span class="string">\</span></span><br><span class="line">    <span class="string">cp</span> <span class="string">/usr/share/zoneinfo/Asia/Taipei</span> <span class="string">/etc/localtime</span> <span class="string">&amp;&amp;</span> <span class="string">\</span></span><br><span class="line">    <span class="string">echo</span> <span class="string">&quot;Asia/Taipei&quot;</span> <span class="string">&gt;</span> <span class="string">/etc/timezone</span></span><br><span class="line"><span class="string">ENV</span> <span class="string">TZ</span> <span class="string">Asia/Taipei</span></span><br><span class="line"><span class="comment"># 安裝 hexo</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">&amp;&amp;</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-cli</span> <span class="string">-g</span></span><br><span class="line"><span class="comment"># 設置通訊連接埠  </span></span><br><span class="line"><span class="string">EXPOSE</span> <span class="number">4000</span></span><br></pre></td></tr></table></figure>
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://valorvie.github.io/2023/04/07/Hexo-Github-pages-Blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ValorVie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Valor's Rock Room">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo + Github pages Blog
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-04-07 13:39:50 / 修改時間：13:41:49" itemprop="dateCreated datePublished" datetime="2023-04-07T13:39:50+08:00">2023-04-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Hexo-Github-pages-Blog"><a href="#Hexo-Github-pages-Blog" class="headerlink" title="Hexo + Github pages Blog"></a>Hexo + Github pages Blog</h1><h4 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定基礎鏡像</span></span><br><span class="line"><span class="string">FROM</span> <span class="string">node:15.14.0-alpine3.13</span></span><br><span class="line"><span class="comment"># 維護者資訊</span></span><br><span class="line"><span class="string">MAINTAINER</span> <span class="string">Valor</span> <span class="string">&lt;user@mail.com&gt;</span></span><br><span class="line"><span class="comment"># 執行安裝的目錄</span></span><br><span class="line"><span class="string">WORKDIR</span> <span class="string">/usr/blog</span></span><br><span class="line"><span class="comment"># 安裝 bash git openssh 以及 c 的編譯工具</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">apk</span> <span class="string">add</span> <span class="string">bash</span> <span class="string">git</span> <span class="string">openssh</span></span><br><span class="line"><span class="comment"># 設置容器時區為台北，不然發布文章的時間是國際時間，也就是比我們晚 8 個小時</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">apk</span> <span class="string">--no-cache</span> <span class="string">add</span> <span class="string">tzdata</span> <span class="string">&amp;&amp;</span> <span class="string">\</span></span><br><span class="line">    <span class="string">cp</span> <span class="string">/usr/share/zoneinfo/Asia/Taipei</span> <span class="string">/etc/localtime</span> <span class="string">&amp;&amp;</span> <span class="string">\</span></span><br><span class="line">    <span class="string">echo</span> <span class="string">&quot;Asia/Taipei&quot;</span> <span class="string">&gt;</span> <span class="string">/etc/timezone</span></span><br><span class="line"><span class="string">ENV</span> <span class="string">TZ</span> <span class="string">Asia/Taipei</span></span><br><span class="line"><span class="comment"># 安裝 hexo</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">&amp;&amp;</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-cli</span> <span class="string">-g</span></span><br><span class="line"><span class="comment"># 設置通訊連接埠  </span></span><br><span class="line"><span class="string">EXPOSE</span> <span class="number">4000</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.9&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">hexo:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">hexo</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">&quot;.&quot;</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&#x27;./data:/usr/blog/&#x27;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&#x27;./ssh:/root/.ssh/&#x27;</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">     <span class="attr">default:</span></span><br><span class="line">      <span class="attr">ipv4_address:</span> <span class="number">172.23</span><span class="number">.0</span><span class="number">.114</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&#x27;4000&#x27;</span></span><br><span class="line">    <span class="attr">stdin_open:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">tty:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">/bin/bash</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span>      </span><br><span class="line">    <span class="attr">labels:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;com.centurylinklabs.watchtower.enable=true&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;traefik.enable=true&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;traefik.http.routers.hexo.tls=true&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;traefik.http.routers.hexo.entrypoints=websecure&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;traefik.http.routers.hexo.rule=Host(`hexo.valorvie.net`)&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;traefik.http.routers.hexo.middlewares=authelia@docker,secure-headers@file&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;traefik.http.routers.hexo-http.entrypoints=web&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;traefik.http.routers.hexo-http.rule=hostregexp(`&#123;host:.+&#125;`)&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;traefik.http.routers.hexo-http.middlewares=redirect-to-https@file&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span> </span><br><span class="line">  <span class="attr">default:</span> </span><br><span class="line">    <span class="attr">external:</span> </span><br><span class="line">      <span class="attr">name:</span> <span class="string">proxy_net</span></span><br></pre></td></tr></table></figure>
 
@@ -161,233 +200,183 @@ Yume Shoka = Valor's Rock Room</title>
 
 <h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p><a target="_blank" rel="noopener" href="https://icoty.github.io/2019/04/18/docker-hexo-blog/">Hexo+Github部落格最簡教學-Dockerfile自動搭建 | 荒野之萍</a><br><a target="_blank" rel="noopener" href="https://www.sio.moe/2021/12/18/computer/Docker-Container/Use-Docker-to-build-Hexo/">使用Docker搭建Hexo - Docker容器 - 計算機 | 🧂 &#x3D; 鹽🧂的記事本 &#x3D; ( ´∀｀)ヵヵヵ</a><br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1563437">手把手教你用Docker搭建Hexo部落格 - 騰訊雲開發者社區-騰訊雲</a><br><a target="_blank" rel="noopener" href="https://blog.yanzhe.tk/2020/06/13/use-docker-multi-stage-build/">Docker 多階段建構示例 + Docker Hexo | 第二天堂</a></p>
 
-  </div>
+    </div>
 
-   <footer>
+    
+    
+    
 
-    <div class="meta">
-  <span class="item">
-    <span class="icon">
-      <i class="ic i-calendar-check"></i>
-    </span>
-    <span class="text">更新於</span>
-    <time title="修改時間：2023-04-07 13:41:49" itemprop="dateModified" datetime="2023-04-07T13:41:49+08:00">2023-04-07</time>
-  </span>
-</div>
+      <footer class="post-footer">
 
-      
-<div class="reward">
-  <button><i class="ic i-heartbeat"></i> 捐贈</button>
-  <p>請我喝[茶]~(￣▽￣)~*</p>
-  <div id="qr">
-      
-      <div>
-        <img data-src="/images/wechatpay.png" alt="ValorVie 微信支付">
-        <p>微信支付</p>
-      </div>
-      
-      <div>
-        <img data-src="/images/alipay.png" alt="ValorVie 支付寶">
-        <p>支付寶</p>
-      </div>
-      
-      <div>
-        <img data-src="/images/paypal.png" alt="ValorVie PayPal">
-        <p>PayPal</p>
-      </div>
-  </div>
-</div>
+        
 
-      
 
-<div id="copyright">
-<ul>
-  <li class="author">
-    <strong>作者： </strong>ValorVie <i class="ic i-at"><em>@</em></i>Valor's Rock Room
-  </li>
-  <li class="link">
-    <strong>文章連結：</strong>
-    <a href="https://valorvie.github.io/2023/04/07/Hexo-Github-pages-Blog/" title="Hexo + Github pages Blog">https://valorvie.github.io/2023/04/07/Hexo-Github-pages-Blog/</a>
-  </li>
-  <li class="license">
-    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 許可協議。轉載請註明出處！
-  </li>
-</ul>
-</div>
-
-  </footer>
-
-</article>
-
-  </div>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/07/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-<div class="post-nav">
-    <div class="item left">
-      
-
-  <a href="/2023/04/07/hello-world/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesng5oej20zk0m87d4.jpg" title="Hello World">
-  <span class="type">上一篇</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>Hello World</h3>
-  </a>
-
-    </div>
-    <div class="item right">
-    </div>
-</div>
-
-  
-  <div class="wrap" id="comments"></div>
 
 
-        </div>
-        <div id="sidebar">
+          </div>
           
 
-<div class="inner">
-
-  <div class="panels">
-    <div class="inner">
-      <div class="contents panel pjax" data-title="文章目錄">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo-Github-pages-Blog"><span class="toc-number">1.</span> <span class="toc-text">Hexo + Github pages Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dockerfile"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">Dockerfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-compose-yml"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">docker-compose.yml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexo-config-yml"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">Hexo _config.yml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hexo%E6%8C%87%E4%BB%A4"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">hexo指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol></li></ol>
-      </div>
-      <div class="related panel pjax" data-title="系列文章">
-      </div>
-      <div class="overview panel" data-title="本站概要">
-        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="image" itemprop="image" alt="ValorVie"
-      data-src="/images/avatar.jpg">
-  <p class="name" itemprop="name">ValorVie</p>
-  <div class="description" itemprop="description"></div>
-</div>
-
-<nav class="state">
-    <div class="item posts">
-      <a href="/archives/">
-        <span class="count">2</span>
-        <span class="name">文章</span>
-      </a>
-    </div>
-</nav>
-
-<div class="social">
-</div>
-
-<ul class="menu">
-  
-    
-  <li class="item">
-    <a href="/" rel="section"><i class="ic i-home"></i>首頁</a>
-  </li>
-
-
-</ul>
-
-      </div>
-    </div>
-  </div>
-
-  <ul id="quick">
-    <li class="prev pjax">
-    </li>
-    <li class="up"><i class="ic i-arrow-up"></i></li>
-    <li class="down"><i class="ic i-arrow-down"></i></li>
-    <li class="next pjax">
-    </li>
-    <li class="percent"></li>
-  </ul>
-</div>
-
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
-        <div class="dimmer"></div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-Github-pages-Blog"><span class="nav-number">1.</span> <span class="nav-text">Hexo + Github pages Blog</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dockerfile"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Dockerfile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-compose-yml"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">docker-compose.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo-config-yml"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">Hexo _config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo%E6%8C%87%E4%BB%A4"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">hexo指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ValorVie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
       </div>
     </main>
-    <footer id="footer">
-      <div class="inner">
-        <div class="widgets">
-          
-<div class="rpost pjax">
-  <h2>隨機文章</h2>
-  <ul>
-      
-  <li class="item">
-    
-<div class="breadcrumb">
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ValorVie</span>
 </div>
-
-    <span><a href="/2023/04/07/hello-world/" title="Hello World">Hello World</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/04/07/Hexo-Github-pages-Blog/" title="Hexo + Github pages Blog">Hexo + Github pages Blog</a></span>
-  </li>
-
-  </ul>
-</div>
-<div>
-  <h2>最新評論</h2>
-  <ul class="leancloud-recent-comment"></ul>
-</div>
-
-        </div>
-        <div class="status">
-  <div class="copyright">
-    
-    &copy; 2010 – 
-    <span itemprop="copyrightYear">2023</span>
-    <span class="with-love">
-      <i class="ic i-sakura rotate"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">ValorVie @ Yume Shoka</span>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
   </div>
-  <div class="powered-by">
-    基於 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
-  </div>
-</div>
+
+        
+
+
+
+
+
+
+
 
       </div>
     </footer>
   </div>
-<script data-config type="text/javascript">
-  var LOCAL = {
-    path: '2023/04/07/Hexo-Github-pages-Blog/',
-    favicon: {
-      show: "（●´3｀●）復活成功",
-      hide: "(´Д｀)瀏覽器崩潰啦"
-    },
-    search : {
-      placeholder: "文章搜尋",
-      empty: "關於 「 ${query} 」 ，什麼也沒搜到",
-      stats: "${time} ms 內找到 ${hits} 條結果"
-    },
-    valine: true,fancybox: true,
-    copyright: '複製成功，轉載請遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 協議。',
-    ignores : [
-      function(uri) {
-        return uri.includes('#');
-      },
-      function(uri) {
-        return new RegExp(LOCAL.path+"$").test(uri);
-      }
-    ]
-  };
-</script>
 
-<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="/js/app.js?v=0.2.5"></script>
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
 </html>
