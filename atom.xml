@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Valor&#39;s Rock Room</title>
+  <icon>https://valorvie.github.io/icon.png</icon>
+  
+  <link href="https://valorvie.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://valorvie.github.io/"/>
+  <updated>2023-04-07T07:35:04.269Z</updated>
+  <id>https://valorvie.github.io/</id>
+  
+  <author>
+    <name>ValorVie</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo + Github pages Blog</title>
+    <link href="https://valorvie.github.io/2023/04/07/Hexo-Github-pages-Blog/"/>
+    <id>https://valorvie.github.io/2023/04/07/Hexo-Github-pages-Blog/</id>
+    <published>2023-04-07T05:39:50.000Z</published>
+    <updated>2023-04-07T07:35:04.269Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Hexo-Github-pages-Blog&quot;&gt;&lt;a href=&quot;#Hexo-Github-pages-Blog&quot; class=&quot;headerlink&quot; title=&quot;Hexo + Github pages Blog&quot;&gt;&lt;/a&gt;Hexo + Github</summary>
+        
+      
+    
+    
+    
+    
+    <category term="IT" scheme="https://valorvie.github.io/tags/IT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://valorvie.github.io/2023/04/07/hello-world/"/>
+    <id>https://valorvie.github.io/2023/04/07/hello-world/</id>
+    <published>2023-04-07T05:33:11.093Z</published>
+    <updated>2023-04-07T05:33:11.093Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
