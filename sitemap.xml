@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://valorvie.github.io/2023/04/10/%E6%B7%BA%E6%BC%AC%E6%A2%85%E9%85%92/</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://valorvie.github.io/2023/04/07/Hexo-Github-pages-Blog/</loc>
     
     <lastmod>2023-04-10</lastmod>
@@ -60,10 +69,38 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://valorvie.github.io/tags/Food/</loc>
+    <lastmod>2023-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://valorvie.github.io/tags/Drink/</loc>
+    <lastmod>2023-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://valorvie.github.io/tags/DIY/</loc>
+    <lastmod>2023-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
     <loc>https://valorvie.github.io/categories/IT/</loc>
+    <lastmod>2023-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://valorvie.github.io/categories/Food/</loc>
     <lastmod>2023-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
