@@ -6,7 +6,7 @@
   <link href="https://valorvie.github.io/atom.xml" rel="self"/>
   
   <link href="https://valorvie.github.io/"/>
-  <updated>2023-04-11T06:30:23.384Z</updated>
+  <updated>2023-04-11T06:40:59.009Z</updated>
   <id>https://valorvie.github.io/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://valorvie.github.io/2023/04/11/TrueNAS-NFS-Linux-Docker%E6%AC%8A%E9%99%90%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85/"/>
     <id>https://valorvie.github.io/2023/04/11/TrueNAS-NFS-Linux-Docker%E6%AC%8A%E9%99%90%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85/</id>
     <published>2023-04-11T05:40:34.000Z</published>
-    <updated>2023-04-11T06:30:23.384Z</updated>
+    <updated>2023-04-11T06:40:59.009Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;TrueNAS-NFS-Linux-Docker權限使用注意事項&quot;&gt;&lt;a href=&quot;#TrueNAS-NFS-Linux-Docker權限使用注意事項&quot; class=&quot;headerlink&quot; title=&quot;TrueNAS NFS + Linux + Docker權限使用注意事項&quot;&gt;&lt;/a&gt;TrueNAS NFS + Linux + Docker權限使用注意事項&lt;/h1&gt;&lt;h4 id=&quot;1-TrueNAS權限&quot;&gt;&lt;a href=&quot;#1-TrueNAS權限&quot; class=&quot;headerlink&quot; title=&quot;1. TrueNAS權限&quot;&gt;&lt;/a&gt;1. TrueNAS權限&lt;/h4&gt;&lt;p&gt;TrueNAS權限為最上層權限，一般而言以此權限為最高準則，如下圖。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://i.imgur.com/OaASnOP.png&quot;&gt;&lt;img src=&quot;https://i.imgur.com/OaASnOP.png&quot; alt=&quot;image.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://i.imgur.com/CWJiufd.png&quot;&gt;&lt;img src=&quot;https://i.imgur.com/CWJiufd.png&quot; alt=&quot;image.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;2-NFS權限&quot;&gt;&lt;a href=&quot;#2-NFS權限&quot; class=&quot;headerlink&quot; title=&quot;2. NFS權限&quot;&gt;&lt;/a&gt;2. NFS權限&lt;/h4&gt;&lt;p&gt;但是若有開啟NFS，通常會避免使用root權限連線。&lt;/p&gt;
 &lt;p&gt;如下圖，連線NFS的使用者皆mapping成apps權限。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://i.imgur.com/Z3ZmUGV.png&quot;&gt;&lt;img src=&quot;https://i.imgur.com/Z3ZmUGV.png&quot; alt=&quot;image.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;</summary>
