@@ -146,4 +146,33 @@
         <tag>DIY</tag>
       </tags>
   </entry>
+  <entry>
+    <title>TrueNAS NFS + Linux + Docker權限使用注意事項</title>
+    <url>/2023/04/11/TrueNAS-NFS-Linux-Docker%E6%AC%8A%E9%99%90%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85/</url>
+    <content><![CDATA[<h1 id="TrueNAS-NFS-Linux-Docker權限使用注意事項"><a href="#TrueNAS-NFS-Linux-Docker權限使用注意事項" class="headerlink" title="TrueNAS NFS + Linux + Docker權限使用注意事項"></a>TrueNAS NFS + Linux + Docker權限使用注意事項</h1><h4 id="1-TrueNAS權限"><a href="#1-TrueNAS權限" class="headerlink" title="1. TrueNAS權限"></a>1. TrueNAS權限</h4><p>TrueNAS權限為最上層權限，一般而言以此權限為最高準則，如下圖。</p>
+<p><a href="https://i.imgur.com/OaASnOP.png"><img src="https://i.imgur.com/OaASnOP.png" alt="image.png"></a></p>
+<h4 id="2-NFS權限"><a href="#2-NFS權限" class="headerlink" title="2. NFS權限"></a>2. NFS權限</h4><p>但是若有開啟NFS，通常會避免使用root權限連線。</p>
+<p>如下圖，連線NFS的使用者皆mapping成apps權限。</p>
+<p><a href="https://i.imgur.com/Z3ZmUGV.png"><img src="https://i.imgur.com/Z3ZmUGV.png" alt="image.png"></a></p>
+<h4 id="3-Linux或Windows連線權限"><a href="#3-Linux或Windows連線權限" class="headerlink" title="3. Linux或Windows連線權限"></a>3. Linux或Windows連線權限</h4><p>須注意，2.設定會導致使用NFS連線的創立文件的時候被mapping成apps</p>
+<h4 id="4-Docker權限"><a href="#4-Docker權限" class="headerlink" title="4. Docker權限"></a>4. Docker權限</h4><p>Docker volume創建文件的時候比較特別，分兩階段</p>
+<ul>
+<li>第一階段如果路徑不存在資料夾或文件，將以當下使用者的身分創建文件，會繞過NFS mapping。</li>
+<li>第二階段如果路徑已存在資料夾或文件，將使用該路徑並以environment中設定的PUID跟PGID當權限創立文件，此PUID跟PGID為Linux Host本身的權限。</li>
+</ul>
+<p>例如以下例子</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">docker:</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/mnt/downloads/docker:/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/mnt/downloads/docker/config.conf:/config.conf</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PUID=568</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PGID=568</span></span><br></pre></td></tr></table></figure>
+
+<p>以1.~2.的權限為例，如果以root登入，如果預設情況下沒有docker資料夾，那麼在docker run後docker會以root權限試圖創立docker資料夾，這會導致權限錯誤無法創建。</p>
+<h5 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h5><p>在linux底下在&#x2F;mnt&#x2F;download底下用mkdir創建資料夾，如此一來權限會正常透過NFS mapping為apps，在docker run後容器將直接使用PUID的權限在docker資料夾裡面創建文件。<br>config.conf也一樣，先創建好讓權限寫入，容器之後就可以正常存取。</p>
+]]></content>
+      <categories>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Linux</tag>
+        <tag>TrueNAS</tag>
+      </tags>
+  </entry>
 </search>

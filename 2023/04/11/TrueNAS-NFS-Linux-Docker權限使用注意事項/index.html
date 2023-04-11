@@ -21,27 +21,33 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"valorvie.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="TrueNAS NFS + Linux + Docker權限使用注意事項1. TrueNAS權限TrueNAS權限為最上層權限，一般而言以此權限為最高準則，如下圖。  2. NFS權限但是若有開啟NFS，通常會避免使用root權限連線。 如下圖，連線NFS的使用者皆mapping成apps權限。  3. Linux或Windows連線權限須注意，2.設定會導致使用NFS連線的創立文件的時候被map">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://valorvie.github.io/2023/04/07/hello-world/index.html">
+<meta property="og:title" content="TrueNAS NFS + Linux + Docker權限使用注意事項">
+<meta property="og:url" content="https://valorvie.github.io/2023/04/11/TrueNAS-NFS-Linux-Docker%E6%AC%8A%E9%99%90%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85/index.html">
 <meta property="og:site_name" content="Valor&#39;s Rock Room">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="TrueNAS NFS + Linux + Docker權限使用注意事項1. TrueNAS權限TrueNAS權限為最上層權限，一般而言以此權限為最高準則，如下圖。  2. NFS權限但是若有開啟NFS，通常會避免使用root權限連線。 如下圖，連線NFS的使用者皆mapping成apps權限。  3. Linux或Windows連線權限須注意，2.設定會導致使用NFS連線的創立文件的時候被map">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-04-07T05:33:11.093Z">
-<meta property="article:modified_time" content="2023-04-07T05:33:11.093Z">
+<meta property="og:image" content="https://i.imgur.com/OaASnOP.png">
+<meta property="og:image" content="https://i.imgur.com/Z3ZmUGV.png">
+<meta property="article:published_time" content="2023-04-11T05:40:34.000Z">
+<meta property="article:modified_time" content="2023-04-11T05:47:01.097Z">
 <meta property="article:author" content="ValorVie">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="TrueNAS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/OaASnOP.png">
 
 
-<link rel="canonical" href="https://valorvie.github.io/2023/04/07/hello-world/">
+<link rel="canonical" href="https://valorvie.github.io/2023/04/11/TrueNAS-NFS-Linux-Docker%E6%AC%8A%E9%99%90%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://valorvie.github.io/2023/04/07/hello-world/","path":"2023/04/07/hello-world/","title":"Hello World"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://valorvie.github.io/2023/04/11/TrueNAS-NFS-Linux-Docker%E6%AC%8A%E9%99%90%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85/","path":"2023/04/11/TrueNAS-NFS-Linux-Docker權限使用注意事項/","title":"TrueNAS NFS + Linux + Docker權限使用注意事項"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Hello World | Valor's Rock Room</title>
+<title>TrueNAS NFS + Linux + Docker權限使用注意事項 | Valor's Rock Room</title>
   
 
 
@@ -141,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TrueNAS-NFS-Linux-Docker%E6%AC%8A%E9%99%90%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="nav-number">1.</span> <span class="nav-text">TrueNAS NFS + Linux + Docker權限使用注意事項</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-TrueNAS%E6%AC%8A%E9%99%90"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1. TrueNAS權限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-NFS%E6%AC%8A%E9%99%90"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2. NFS權限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Linux%E6%88%96Windows%E9%80%A3%E7%B7%9A%E6%AC%8A%E9%99%90"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3. Linux或Windows連線權限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Docker%E6%AC%8A%E9%99%90"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4. Docker權限</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.0.4.1.</span> <span class="nav-text">解決方式</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -195,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://valorvie.github.io/2023/04/07/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://valorvie.github.io/2023/04/11/TrueNAS-NFS-Linux-Docker%E6%AC%8A%E9%99%90%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -208,12 +214,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Hello World | Valor's Rock Room">
+      <meta itemprop="name" content="TrueNAS NFS + Linux + Docker權限使用注意事項 | Valor's Rock Room">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          TrueNAS NFS + Linux + Docker權限使用注意事項
         </h1>
 
         <div class="post-meta-container">
@@ -223,8 +229,18 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
+      
 
-      <time title="創建時間：2023-04-07 13:33:11" itemprop="dateCreated datePublished" datetime="2023-04-07T13:33:11+08:00">2023-04-07</time>
+      <time title="創建時間：2023-04-11 13:40:34 / 修改時間：13:47:01" itemprop="dateCreated datePublished" datetime="2023-04-11T13:40:34+08:00">2023-04-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+        </span>
     </span>
 
   
@@ -241,7 +257,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">文章字數：</span>
-      <span>367</span>
+      <span>759</span>
     </span>
     <span class="post-meta-item" title="所需閱讀時間">
       <span class="post-meta-item-icon">
@@ -259,19 +275,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="TrueNAS-NFS-Linux-Docker權限使用注意事項"><a href="#TrueNAS-NFS-Linux-Docker權限使用注意事項" class="headerlink" title="TrueNAS NFS + Linux + Docker權限使用注意事項"></a>TrueNAS NFS + Linux + Docker權限使用注意事項</h1><h4 id="1-TrueNAS權限"><a href="#1-TrueNAS權限" class="headerlink" title="1. TrueNAS權限"></a>1. TrueNAS權限</h4><p>TrueNAS權限為最上層權限，一般而言以此權限為最高準則，如下圖。</p>
+<p><a target="_blank" rel="noopener" href="https://i.imgur.com/OaASnOP.png"><img src="https://i.imgur.com/OaASnOP.png" alt="image.png"></a></p>
+<h4 id="2-NFS權限"><a href="#2-NFS權限" class="headerlink" title="2. NFS權限"></a>2. NFS權限</h4><p>但是若有開啟NFS，通常會避免使用root權限連線。</p>
+<p>如下圖，連線NFS的使用者皆mapping成apps權限。</p>
+<p><a target="_blank" rel="noopener" href="https://i.imgur.com/Z3ZmUGV.png"><img src="https://i.imgur.com/Z3ZmUGV.png" alt="image.png"></a></p>
+<h4 id="3-Linux或Windows連線權限"><a href="#3-Linux或Windows連線權限" class="headerlink" title="3. Linux或Windows連線權限"></a>3. Linux或Windows連線權限</h4><p>須注意，2.設定會導致使用NFS連線的創立文件的時候被mapping成apps</p>
+<h4 id="4-Docker權限"><a href="#4-Docker權限" class="headerlink" title="4. Docker權限"></a>4. Docker權限</h4><p>Docker volume創建文件的時候比較特別，分兩階段</p>
+<ul>
+<li>第一階段如果路徑不存在資料夾或文件，將以當下使用者的身分創建文件，會繞過NFS mapping。</li>
+<li>第二階段如果路徑已存在資料夾或文件，將使用該路徑並以environment中設定的PUID跟PGID當權限創立文件，此PUID跟PGID為Linux Host本身的權限。</li>
+</ul>
+<p>例如以下例子</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">docker:</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/mnt/downloads/docker:/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/mnt/downloads/docker/config.conf:/config.conf</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PUID=568</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PGID=568</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>以1.~2.的權限為例，如果以root登入，如果預設情況下沒有docker資料夾，那麼在docker run後docker會以root權限試圖創立docker資料夾，這會導致權限錯誤無法創建。</p>
+<h5 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h5><p>在linux底下在&#x2F;mnt&#x2F;download底下用mkdir創建資料夾，如此一來權限會正常透過NFS mapping為apps，在docker run後容器將直接使用PUID的權限在docker資料夾裡面創建文件。<br>config.conf也一樣，先創建好讓權限寫入，容器之後就可以正常存取。</p>
 
     </div>
 
@@ -289,7 +308,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>文章連結：</strong>
-      <a href="https://valorvie.github.io/2023/04/07/hello-world/" title="Hello World">https://valorvie.github.io/2023/04/07/hello-world/</a>
+      <a href="https://valorvie.github.io/2023/04/11/TrueNAS-NFS-Linux-Docker%E6%AC%8A%E9%99%90%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85/" title="TrueNAS NFS + Linux + Docker權限使用注意事項">https://valorvie.github.io/2023/04/11/TrueNAS-NFS-Linux-Docker權限使用注意事項/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
@@ -297,16 +316,21 @@
 </ul>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/TrueNAS/" rel="tag"># TrueNAS</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2023/04/10/%E6%B7%BA%E6%BC%AC%E6%A2%85%E9%85%92/" rel="prev" title="淺漬梅酒">
+                  <i class="fa fa-chevron-left"></i> 淺漬梅酒
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/04/07/Hexo-Github-pages-Blog/" rel="next" title="Hexo + Github pages Blog">
-                  Hexo + Github pages Blog <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
