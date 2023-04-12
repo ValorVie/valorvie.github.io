@@ -176,4 +176,22 @@
         <tag>TrueNAS</tag>
       </tags>
   </entry>
+  <entry>
+    <title>筆記分類</title>
+    <url>/2023/04/12/%E7%AD%86%E8%A8%98%E5%88%86%E9%A1%9E/</url>
+    <content><![CDATA[<h3 id="Memo"><a href="#Memo" class="headerlink" title="Memo"></a>Memo</h3><h4 id="使用情境"><a href="#使用情境" class="headerlink" title="使用情境"></a>使用情境</h4><p>臨時紀錄、訊息或圖片轉存、提醒事項等等的內容，基本不分類，相當於筆記中的Inbox概念</p>
+<h4 id="使用軟體"><a href="#使用軟體" class="headerlink" title="使用軟體"></a>使用軟體</h4><p>Google Keep、Memos</p>
+<h3 id="一般筆記"><a href="#一般筆記" class="headerlink" title="一般筆記"></a>一般筆記</h3><h4 id="使用情境-1"><a href="#使用情境-1" class="headerlink" title="使用情境"></a>使用情境</h4><p>有基本分類，記錄長篇內容或是較為重要的訊息，不太講究排版</p>
+<h4 id="使用軟體-1"><a href="#使用軟體-1" class="headerlink" title="使用軟體"></a>使用軟體</h4><p>Microsoft Onenote、Trilium</p>
+<h3 id="Wiki"><a href="#Wiki" class="headerlink" title="Wiki"></a>Wiki</h3><h4 id="使用情境-2"><a href="#使用情境-2" class="headerlink" title="使用情境"></a>使用情境</h4><p>分類並整理過的內容，經過排版以閱讀舒適為主</p>
+<h4 id="使用軟體-2"><a href="#使用軟體-2" class="headerlink" title="使用軟體"></a>使用軟體</h4><p>Bookstack</p>
+]]></content>
+      <categories>
+        <category>General</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
+        <tag>Note</tag>
+      </tags>
+  </entry>
 </search>
