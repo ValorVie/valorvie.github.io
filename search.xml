@@ -81,6 +81,80 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux Network網路設定</title>
+    <url>/2023/04/14/Linux-Network%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/</url>
+    <content><![CDATA[<h1 id="Linux-Network網路設定"><a href="#Linux-Network網路設定" class="headerlink" title="Linux Network網路設定"></a>Linux Network網路設定</h1><h2 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h2><ol>
+<li>使用ifconfig：ifconfig是一個命令行工具，可以用來設定網卡、IP地址、子網掩碼等。</li>
+<li>使用ip命令：ip命令是一個較新的命令行工具，它可以用來設定網卡、IP地址、子網掩碼、路由表等，支持更多的功能。</li>
+<li>使用NetworkManager：NetworkManager是一個用於配置和管理網路連接的系統守護進程和命令行工具。它可以自動配置網路連接，包括有線和無線連接，支持多種網路設置，例如VPN和PPPoE。</li>
+<li>使用&#x2F;etc&#x2F;network&#x2F;interfaces文件：這個文件是Debian和Ubuntu系統中用於配置網路設置的主要文件。它定義了網路接口、IP地址、子網掩碼、網關和DNS等。</li>
+<li>使用systemd-networkd：systemd-networkd是systemd的一個模組，它可以用來設置網路接口、IP地址、子網掩碼、路由表和DNS等，支持多種網路設置。<span id="more"></span></li>
+</ol>
+<h2 id="使用ifconfig"><a href="#使用ifconfig" class="headerlink" title="使用ifconfig"></a>使用ifconfig</h2><ol>
+<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
+</li>
+<li><p>輸入以下命令檢視現有的網卡列表：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 這會列出所有網卡的詳細信息，包括網卡名稱、MAC地址和IP地址等。</span></span><br><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure></li>
+<li><p>選擇要設置的網卡，例如eth0，輸入以下命令使其處於啟用狀態： </p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig eth0 up</span><br></pre></td></tr></table></figure></li>
+<li><p>設置網卡IP地址，輸入以下命令： </p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig eth0 &lt;IP地址&gt; netmask &lt;子網掩碼&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼。</p>
+<p> 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，則輸入以下命令：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig eth0 192.168.1.100 netmask 255.255.255.0</span><br></pre></td></tr></table></figure></li>
+<li><p>（可選）如果需要設置預設網關，輸入以下命令： </p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 其中，&lt;網關IP地址&gt;是你的路由器或網關的IP地址。</span></span><br><span class="line">route add default gw &lt;網關IP地址&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="使用NetworkManager"><a href="#使用NetworkManager" class="headerlink" title="使用NetworkManager"></a>使用NetworkManager</h2><ol>
+<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
+</li>
+<li><p>輸入以下命令檢視現有的網卡列表：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 這會列出所有網卡的詳細信息，包括網卡名稱、狀態和連接狀態等。</span></span><br><span class="line">nmcli device</span><br><span class="line"><span class="comment"># 或使用</span></span><br><span class="line">nmtui</span><br></pre></td></tr></table></figure></li>
+<li><p>選擇要設置的網卡，例如eth0，輸入以下命令使其處於啟用狀態： </p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmcli device <span class="built_in">set</span> eth0 managed <span class="built_in">yes</span></span><br></pre></td></tr></table></figure></li>
+<li><p>設置網卡IP地址，輸入以下命令： </p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmcli connection modify eth0 ipv4.addresses &lt;IP地址&gt;/&lt;子網掩碼&gt;</span><br><span class="line"><span class="comment"># 其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼。</span></span><br><span class="line"><span class="comment"># 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，則輸入以下命令：</span></span><br><span class="line">nmcli connection modify eth0 ipv4.addresses 192.168.1.100/24</span><br><span class="line"><span class="comment"># 注意，這裡的子網掩碼需要使用CIDR表示法。</span></span><br></pre></td></tr></table></figure></li>
+<li><p>（可選）如果需要設置預設網關，輸入以下命令： </p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmcli connection modify eth0 ipv4.gateway &lt;網關IP地址&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>重啟NetworkManager服務，使設置生效： </p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart NetworkManager</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="使用-x2F-etc-x2F-network-x2F-interfaces文件"><a href="#使用-x2F-etc-x2F-network-x2F-interfaces文件" class="headerlink" title="使用&#x2F;etc&#x2F;network&#x2F;interfaces文件"></a>使用&#x2F;etc&#x2F;network&#x2F;interfaces文件</h2><ol>
+<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
+</li>
+<li><p>編輯&#x2F;etc&#x2F;network&#x2F;interfaces文件：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 如果該文件已存在，請先備份該文件。</span></span><br><span class="line">vi /etc/network/interfaces</span><br></pre></td></tr></table></figure></li>
+<li><p>定義網卡名稱和設置：</p>
+ <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">auto eth0</span><br><span class="line">iface eth0 inet <span class="built_in">static</span></span><br><span class="line">address &lt;IP地址&gt;</span><br><span class="line">netmask &lt;子網掩碼&gt;</span><br><span class="line">gateway &lt;網關IP地址&gt;</span><br><span class="line"><span class="comment"># 其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼，&lt;網關IP地址&gt;是你的路由器或網關的IP地址。</span></span><br><span class="line"><span class="comment"># 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，並設置預設網關為192.168.1.1，則編輯文件內容如下：</span></span><br><span class="line">auto eth0</span><br><span class="line">iface eth0 inet <span class="built_in">static</span></span><br><span class="line">address <span class="number">192.168</span>.<span class="number">1.100</span></span><br><span class="line">netmask <span class="number">255.255</span>.<span class="number">255.0</span></span><br><span class="line">gateway <span class="number">192.168</span>.<span class="number">1.1</span></span><br></pre></td></tr></table></figure></li>
+<li><p>保存文件並退出編輯器。</p>
+</li>
+<li><p>重新啟動網路服務，以應用新的配置：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart networking</span><br></pre></td></tr></table></figure></li>
+<li><p>如果比較舊的系統可能沒有systemctl，需要使用ifupdown</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 啟動網卡</span></span><br><span class="line">ifup eth0</span><br><span class="line"><span class="comment"># 停止網卡</span></span><br><span class="line">ifdown eth0</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="使用systemd-networkd"><a href="#使用systemd-networkd" class="headerlink" title="使用systemd-networkd"></a>使用systemd-networkd</h2><ol>
+<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
+</li>
+<li><p>創建一個描述網卡設置的配置文件，例如：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 如果該文件夾不存在，請先創建該文件夾。</span></span><br><span class="line">vi /etc/systemd/network/eth0.network</span><br></pre></td></tr></table></figure></li>
+<li><p>定義網卡名稱和設置：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Match]</span><br><span class="line">Name=eth0</span><br><span class="line"></span><br><span class="line">[Network]</span><br><span class="line">Address=&lt;IP地址&gt;/&lt;子網掩碼&gt;</span><br><span class="line">Gateway=&lt;網關IP地址&gt;</span><br><span class="line">DNS=&lt;DNS IP地址&gt;</span><br><span class="line"><span class="comment"># 其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼，&lt;網關IP地址&gt;是你的路由器或網關的IP地址，&lt;DNS IP地址&gt;是你的DNS服務器的IP地址。</span></span><br><span class="line"><span class="comment"># 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，並設置預設網關為192.168.1.1，DNS為8.8.8.8，則編輯文件內容如下：</span></span><br><span class="line">[Match]</span><br><span class="line">Name=eth0</span><br><span class="line"></span><br><span class="line">[Network]</span><br><span class="line">Address=192.168.1.100/24</span><br><span class="line">Gateway=192.168.1.1</span><br><span class="line">DNS=8.8.8.8</span><br></pre></td></tr></table></figure></li>
+<li><p>保存文件並退出編輯器。</p>
+</li>
+<li><p>重新啟動systemd-networkd服務，以應用新的配置：</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart systemd-networkd</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Network</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TrueNAS NFS + Linux + Docker權限使用注意事項</title>
     <url>/2023/04/11/TrueNAS-NFS-Linux-Docker%E6%AC%8A%E9%99%90%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85/</url>
     <content><![CDATA[<h1 id="TrueNAS-NFS-Linux-Docker權限使用注意事項"><a href="#TrueNAS-NFS-Linux-Docker權限使用注意事項" class="headerlink" title="TrueNAS NFS + Linux + Docker權限使用注意事項"></a>TrueNAS NFS + Linux + Docker權限使用注意事項</h1><h4 id="1-TrueNAS權限"><a href="#1-TrueNAS權限" class="headerlink" title="1. TrueNAS權限"></a>1. TrueNAS權限</h4><p>TrueNAS權限為最上層權限，一般而言以此權限為最高準則，如下圖。</p>
@@ -193,80 +267,6 @@
       <tags>
         <tag>Blog</tag>
         <tag>Note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux Network網路設定</title>
-    <url>/2023/04/14/Linux-Network%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/</url>
-    <content><![CDATA[<h1 id="Linux-Network網路設定"><a href="#Linux-Network網路設定" class="headerlink" title="Linux Network網路設定"></a>Linux Network網路設定</h1><h2 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h2><ol>
-<li>使用ifconfig：ifconfig是一個命令行工具，可以用來設定網卡、IP地址、子網掩碼等。</li>
-<li>使用ip命令：ip命令是一個較新的命令行工具，它可以用來設定網卡、IP地址、子網掩碼、路由表等，支持更多的功能。</li>
-<li>使用NetworkManager：NetworkManager是一個用於配置和管理網路連接的系統守護進程和命令行工具。它可以自動配置網路連接，包括有線和無線連接，支持多種網路設置，例如VPN和PPPoE。</li>
-<li>使用&#x2F;etc&#x2F;network&#x2F;interfaces文件：這個文件是Debian和Ubuntu系統中用於配置網路設置的主要文件。它定義了網路接口、IP地址、子網掩碼、網關和DNS等。</li>
-<li>使用systemd-networkd：systemd-networkd是systemd的一個模組，它可以用來設置網路接口、IP地址、子網掩碼、路由表和DNS等，支持多種網路設置。<span id="more"></span></li>
-</ol>
-<h2 id="使用ifconfig"><a href="#使用ifconfig" class="headerlink" title="使用ifconfig"></a>使用ifconfig</h2><ol>
-<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
-</li>
-<li><p>輸入以下命令檢視現有的網卡列表：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 這會列出所有網卡的詳細信息，包括網卡名稱、MAC地址和IP地址等。</span></span><br><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure></li>
-<li><p>選擇要設置的網卡，例如eth0，輸入以下命令使其處於啟用狀態： </p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig eth0 up</span><br></pre></td></tr></table></figure></li>
-<li><p>設置網卡IP地址，輸入以下命令： </p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig eth0 &lt;IP地址&gt; netmask &lt;子網掩碼&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼。</p>
-<p> 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，則輸入以下命令：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig eth0 192.168.1.100 netmask 255.255.255.0</span><br></pre></td></tr></table></figure></li>
-<li><p>（可選）如果需要設置預設網關，輸入以下命令： </p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 其中，&lt;網關IP地址&gt;是你的路由器或網關的IP地址。</span></span><br><span class="line">route add default gw &lt;網關IP地址&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="使用NetworkManager"><a href="#使用NetworkManager" class="headerlink" title="使用NetworkManager"></a>使用NetworkManager</h2><ol>
-<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
-</li>
-<li><p>輸入以下命令檢視現有的網卡列表：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 這會列出所有網卡的詳細信息，包括網卡名稱、狀態和連接狀態等。</span></span><br><span class="line">nmcli device</span><br><span class="line"><span class="comment"># 或使用</span></span><br><span class="line">nmtui</span><br></pre></td></tr></table></figure></li>
-<li><p>選擇要設置的網卡，例如eth0，輸入以下命令使其處於啟用狀態： </p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmcli device <span class="built_in">set</span> eth0 managed <span class="built_in">yes</span></span><br></pre></td></tr></table></figure></li>
-<li><p>設置網卡IP地址，輸入以下命令： </p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmcli connection modify eth0 ipv4.addresses &lt;IP地址&gt;/&lt;子網掩碼&gt;</span><br><span class="line"><span class="comment"># 其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼。</span></span><br><span class="line"><span class="comment"># 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，則輸入以下命令：</span></span><br><span class="line">nmcli connection modify eth0 ipv4.addresses 192.168.1.100/24</span><br><span class="line"><span class="comment"># 注意，這裡的子網掩碼需要使用CIDR表示法。</span></span><br></pre></td></tr></table></figure></li>
-<li><p>（可選）如果需要設置預設網關，輸入以下命令： </p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmcli connection modify eth0 ipv4.gateway &lt;網關IP地址&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>重啟NetworkManager服務，使設置生效： </p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart NetworkManager</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="使用-x2F-etc-x2F-network-x2F-interfaces文件"><a href="#使用-x2F-etc-x2F-network-x2F-interfaces文件" class="headerlink" title="使用&#x2F;etc&#x2F;network&#x2F;interfaces文件"></a>使用&#x2F;etc&#x2F;network&#x2F;interfaces文件</h2><ol>
-<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
-</li>
-<li><p>編輯&#x2F;etc&#x2F;network&#x2F;interfaces文件：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 如果該文件已存在，請先備份該文件。</span></span><br><span class="line">vi /etc/network/interfaces</span><br></pre></td></tr></table></figure></li>
-<li><p>定義網卡名稱和設置：</p>
- <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">auto eth0</span><br><span class="line">iface eth0 inet <span class="built_in">static</span></span><br><span class="line">address &lt;IP地址&gt;</span><br><span class="line">netmask &lt;子網掩碼&gt;</span><br><span class="line">gateway &lt;網關IP地址&gt;</span><br><span class="line"><span class="comment"># 其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼，&lt;網關IP地址&gt;是你的路由器或網關的IP地址。</span></span><br><span class="line"><span class="comment"># 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，並設置預設網關為192.168.1.1，則編輯文件內容如下：</span></span><br><span class="line">auto eth0</span><br><span class="line">iface eth0 inet <span class="built_in">static</span></span><br><span class="line">address <span class="number">192.168</span>.<span class="number">1.100</span></span><br><span class="line">netmask <span class="number">255.255</span>.<span class="number">255.0</span></span><br><span class="line">gateway <span class="number">192.168</span>.<span class="number">1.1</span></span><br></pre></td></tr></table></figure></li>
-<li><p>保存文件並退出編輯器。</p>
-</li>
-<li><p>重新啟動網路服務，以應用新的配置：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart networking</span><br></pre></td></tr></table></figure></li>
-<li><p>如果比較舊的系統可能沒有systemctl，需要使用ifupdown</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 啟動網卡</span></span><br><span class="line">ifup eth0</span><br><span class="line"><span class="comment"># 停止網卡</span></span><br><span class="line">ifdown eth0</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="使用systemd-networkd"><a href="#使用systemd-networkd" class="headerlink" title="使用systemd-networkd"></a>使用systemd-networkd</h2><ol>
-<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
-</li>
-<li><p>創建一個描述網卡設置的配置文件，例如：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 如果該文件夾不存在，請先創建該文件夾。</span></span><br><span class="line">vi /etc/systemd/network/eth0.network</span><br></pre></td></tr></table></figure></li>
-<li><p>定義網卡名稱和設置：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Match]</span><br><span class="line">Name=eth0</span><br><span class="line"></span><br><span class="line">[Network]</span><br><span class="line">Address=&lt;IP地址&gt;/&lt;子網掩碼&gt;</span><br><span class="line">Gateway=&lt;網關IP地址&gt;</span><br><span class="line">DNS=&lt;DNS IP地址&gt;</span><br><span class="line"><span class="comment"># 其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼，&lt;網關IP地址&gt;是你的路由器或網關的IP地址，&lt;DNS IP地址&gt;是你的DNS服務器的IP地址。</span></span><br><span class="line"><span class="comment"># 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，並設置預設網關為192.168.1.1，DNS為8.8.8.8，則編輯文件內容如下：</span></span><br><span class="line">[Match]</span><br><span class="line">Name=eth0</span><br><span class="line"></span><br><span class="line">[Network]</span><br><span class="line">Address=192.168.1.100/24</span><br><span class="line">Gateway=192.168.1.1</span><br><span class="line">DNS=8.8.8.8</span><br></pre></td></tr></table></figure></li>
-<li><p>保存文件並退出編輯器。</p>
-</li>
-<li><p>重新啟動systemd-networkd服務，以應用新的配置：</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart systemd-networkd</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>IT</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>Network</tag>
       </tags>
   </entry>
 </search>
