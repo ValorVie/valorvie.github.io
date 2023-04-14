@@ -6,7 +6,7 @@
   <link href="https://valorvie.github.net/atom.xml" rel="self"/>
   
   <link href="https://valorvie.github.net/"/>
-  <updated>2023-04-12T07:53:42.082Z</updated>
+  <updated>2023-04-14T02:02:54.584Z</updated>
   <id>https://valorvie.github.net/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux Network網路設定</title>
+    <link href="https://valorvie.github.net/2023/04/14/Linux-Network%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/"/>
+    <id>https://valorvie.github.net/2023/04/14/Linux-Network%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/</id>
+    <published>2023-04-14T01:56:56.000Z</published>
+    <updated>2023-04-14T02:02:54.584Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Linux-Network網路設定&quot;&gt;&lt;a href=&quot;#Linux-Network網路設定&quot; class=&quot;headerlink&quot; title=&quot;Linux Network網路設定&quot;&gt;&lt;/a&gt;Linux Network網路設定&lt;/h1&gt;&lt;h2 id=&quot;設定方式&quot;&gt;&lt;a href=&quot;#設定方式&quot; class=&quot;headerlink&quot; title=&quot;設定方式&quot;&gt;&lt;/a&gt;設定方式&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;使用ifconfig：ifconfig是一個命令行工具，可以用來設定網卡、IP地址、子網掩碼等。&lt;/li&gt;
+&lt;li&gt;使用ip命令：ip命令是一個較新的命令行工具，它可以用來設定網卡、IP地址、子網掩碼、路由表等，支持更多的功能。&lt;/li&gt;
+&lt;li&gt;使用NetworkManager：NetworkManager是一個用於配置和管理網路連接的系統守護進程和命令行工具。它可以自動配置網路連接，包括有線和無線連接，支持多種網路設置，例如VPN和PPPoE。&lt;/li&gt;
+&lt;li&gt;使用&amp;#x2F;etc&amp;#x2F;network&amp;#x2F;interfaces文件：這個文件是Debian和Ubuntu系統中用於配置網路設置的主要文件。它定義了網路接口、IP地址、子網掩碼、網關和DNS等。&lt;/li&gt;
+&lt;li&gt;使用systemd-networkd：systemd-networkd是systemd的一個模組，它可以用來設置網路接口、IP地址、子網掩碼、路由表和DNS等，支持多種網路設置。</summary>
+    
+    
+    
+    <category term="IT" scheme="https://valorvie.github.net/categories/IT/"/>
+    
+    
+    <category term="Linux" scheme="https://valorvie.github.net/tags/Linux/"/>
+    
+    <category term="Network" scheme="https://valorvie.github.net/tags/Network/"/>
+    
+  </entry>
   
   <entry>
     <title>筆記分類</title>

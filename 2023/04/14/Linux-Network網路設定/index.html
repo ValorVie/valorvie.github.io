@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-V.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-V.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-V.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab-V.svg" color="#222">
+  <meta name="google-site-verification" content="H5Ixuot_Z3K68Q1m6LfK0iQoHAojmLD2SUKL1IqBInw">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"valorvie.github.net","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Linux Network網路設定設定方式 使用ifconfig：ifconfig是一個命令行工具，可以用來設定網卡、IP地址、子網掩碼等。 使用ip命令：ip命令是一個較新的命令行工具，它可以用來設定網卡、IP地址、子網掩碼、路由表等，支持更多的功能。 使用NetworkManager：NetworkManager是一個用於配置和管理網路連接的系統守護進程和命令行工具。它可以自動配置網路連接，包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux Network網路設定">
+<meta property="og:url" content="https://valorvie.github.net/2023/04/14/Linux-Network%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/index.html">
+<meta property="og:site_name" content="Valor&#39;s Rock Room">
+<meta property="og:description" content="Linux Network網路設定設定方式 使用ifconfig：ifconfig是一個命令行工具，可以用來設定網卡、IP地址、子網掩碼等。 使用ip命令：ip命令是一個較新的命令行工具，它可以用來設定網卡、IP地址、子網掩碼、路由表等，支持更多的功能。 使用NetworkManager：NetworkManager是一個用於配置和管理網路連接的系統守護進程和命令行工具。它可以自動配置網路連接，包">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-04-14T01:56:56.000Z">
+<meta property="article:modified_time" content="2023-04-14T02:02:54.584Z">
+<meta property="article:author" content="ValorVie">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Network">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://valorvie.github.net/2023/04/14/Linux-Network%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://valorvie.github.net/2023/04/14/Linux-Network%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/","path":"2023/04/14/Linux-Network網路設定/","title":"Linux Network網路設定"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Linux Network網路設定 | Valor's Rock Room</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Valor's Rock Room" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Valor's Rock Room</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-Network%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">Linux Network網路設定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">設定方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8ifconfig"><span class="nav-number">1.2.</span> <span class="nav-text">使用ifconfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8NetworkManager"><span class="nav-number">1.3.</span> <span class="nav-text">使用NetworkManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-x2F-etc-x2F-network-x2F-interfaces%E6%96%87%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">使用&#x2F;etc&#x2F;network&#x2F;interfaces文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8systemd-networkd"><span class="nav-number">1.5.</span> <span class="nav-text">使用systemd-networkd</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ValorVie</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://valorvie.github.net/2023/04/14/Linux-Network%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ValorVie">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Valor's Rock Room">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Linux Network網路設定 | Valor's Rock Room">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux Network網路設定
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-04-14 09:56:56 / 修改時間：10:02:54" itemprop="dateCreated datePublished" datetime="2023-04-14T09:56:56+08:00">2023-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">閱讀次數：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="文章字數">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">文章字數：</span>
+      <span>2.7k</span>
+    </span>
+    <span class="post-meta-item" title="所需閱讀時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+      <span>2 分鐘</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Linux-Network網路設定"><a href="#Linux-Network網路設定" class="headerlink" title="Linux Network網路設定"></a>Linux Network網路設定</h1><h2 id="設定方式"><a href="#設定方式" class="headerlink" title="設定方式"></a>設定方式</h2><ol>
+<li>使用ifconfig：ifconfig是一個命令行工具，可以用來設定網卡、IP地址、子網掩碼等。</li>
+<li>使用ip命令：ip命令是一個較新的命令行工具，它可以用來設定網卡、IP地址、子網掩碼、路由表等，支持更多的功能。</li>
+<li>使用NetworkManager：NetworkManager是一個用於配置和管理網路連接的系統守護進程和命令行工具。它可以自動配置網路連接，包括有線和無線連接，支持多種網路設置，例如VPN和PPPoE。</li>
+<li>使用&#x2F;etc&#x2F;network&#x2F;interfaces文件：這個文件是Debian和Ubuntu系統中用於配置網路設置的主要文件。它定義了網路接口、IP地址、子網掩碼、網關和DNS等。</li>
+<li>使用systemd-networkd：systemd-networkd是systemd的一個模組，它可以用來設置網路接口、IP地址、子網掩碼、路由表和DNS等，支持多種網路設置。<span id="more"></span></li>
+</ol>
+<h2 id="使用ifconfig"><a href="#使用ifconfig" class="headerlink" title="使用ifconfig"></a>使用ifconfig</h2><ol>
+<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
+</li>
+<li><p>輸入以下命令檢視現有的網卡列表：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 這會列出所有網卡的詳細信息，包括網卡名稱、MAC地址和IP地址等。</span></span><br><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure></li>
+<li><p>選擇要設置的網卡，例如eth0，輸入以下命令使其處於啟用狀態： </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 up</span><br></pre></td></tr></table></figure></li>
+<li><p>設置網卡IP地址，輸入以下命令： </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 &lt;IP地址&gt; netmask &lt;子網掩碼&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼。</p>
+<p> 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，則輸入以下命令：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 192.168.1.100 netmask 255.255.255.0</span><br></pre></td></tr></table></figure></li>
+<li><p>（可選）如果需要設置預設網關，輸入以下命令： </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 其中，&lt;網關IP地址&gt;是你的路由器或網關的IP地址。</span></span><br><span class="line">route add default gw &lt;網關IP地址&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="使用NetworkManager"><a href="#使用NetworkManager" class="headerlink" title="使用NetworkManager"></a>使用NetworkManager</h2><ol>
+<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
+</li>
+<li><p>輸入以下命令檢視現有的網卡列表：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 這會列出所有網卡的詳細信息，包括網卡名稱、狀態和連接狀態等。</span></span><br><span class="line">nmcli device</span><br><span class="line"><span class="comment"># 或使用</span></span><br><span class="line">nmtui</span><br></pre></td></tr></table></figure></li>
+<li><p>選擇要設置的網卡，例如eth0，輸入以下命令使其處於啟用狀態： </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli device <span class="built_in">set</span> eth0 managed <span class="built_in">yes</span></span><br></pre></td></tr></table></figure></li>
+<li><p>設置網卡IP地址，輸入以下命令： </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection modify eth0 ipv4.addresses &lt;IP地址&gt;/&lt;子網掩碼&gt;</span><br><span class="line"><span class="comment"># 其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼。</span></span><br><span class="line"><span class="comment"># 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，則輸入以下命令：</span></span><br><span class="line">nmcli connection modify eth0 ipv4.addresses 192.168.1.100/24</span><br><span class="line"><span class="comment"># 注意，這裡的子網掩碼需要使用CIDR表示法。</span></span><br></pre></td></tr></table></figure></li>
+<li><p>（可選）如果需要設置預設網關，輸入以下命令： </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli connection modify eth0 ipv4.gateway &lt;網關IP地址&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>重啟NetworkManager服務，使設置生效： </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart NetworkManager</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="使用-x2F-etc-x2F-network-x2F-interfaces文件"><a href="#使用-x2F-etc-x2F-network-x2F-interfaces文件" class="headerlink" title="使用&#x2F;etc&#x2F;network&#x2F;interfaces文件"></a>使用&#x2F;etc&#x2F;network&#x2F;interfaces文件</h2><ol>
+<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
+</li>
+<li><p>編輯&#x2F;etc&#x2F;network&#x2F;interfaces文件：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果該文件已存在，請先備份該文件。</span></span><br><span class="line">vi /etc/network/interfaces</span><br></pre></td></tr></table></figure></li>
+<li><p>定義網卡名稱和設置：</p>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">auto eth0</span><br><span class="line">iface eth0 inet <span class="built_in">static</span></span><br><span class="line">address &lt;IP地址&gt;</span><br><span class="line">netmask &lt;子網掩碼&gt;</span><br><span class="line">gateway &lt;網關IP地址&gt;</span><br><span class="line"><span class="comment"># 其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼，&lt;網關IP地址&gt;是你的路由器或網關的IP地址。</span></span><br><span class="line"><span class="comment"># 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，並設置預設網關為192.168.1.1，則編輯文件內容如下：</span></span><br><span class="line">auto eth0</span><br><span class="line">iface eth0 inet <span class="built_in">static</span></span><br><span class="line">address <span class="number">192.168</span>.<span class="number">1.100</span></span><br><span class="line">netmask <span class="number">255.255</span>.<span class="number">255.0</span></span><br><span class="line">gateway <span class="number">192.168</span>.<span class="number">1.1</span></span><br></pre></td></tr></table></figure></li>
+<li><p>保存文件並退出編輯器。</p>
+</li>
+<li><p>重新啟動網路服務，以應用新的配置：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart networking</span><br></pre></td></tr></table></figure></li>
+<li><p>如果比較舊的系統可能沒有systemctl，需要使用ifupdown</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 啟動網卡</span></span><br><span class="line">ifup eth0</span><br><span class="line"><span class="comment"># 停止網卡</span></span><br><span class="line">ifdown eth0</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="使用systemd-networkd"><a href="#使用systemd-networkd" class="headerlink" title="使用systemd-networkd"></a>使用systemd-networkd</h2><ol>
+<li><p>打開終端機，以root或有足夠權限的用戶身份登錄系統。</p>
+</li>
+<li><p>創建一個描述網卡設置的配置文件，例如：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果該文件夾不存在，請先創建該文件夾。</span></span><br><span class="line">vi /etc/systemd/network/eth0.network</span><br></pre></td></tr></table></figure></li>
+<li><p>定義網卡名稱和設置：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Match]</span><br><span class="line">Name=eth0</span><br><span class="line"></span><br><span class="line">[Network]</span><br><span class="line">Address=&lt;IP地址&gt;/&lt;子網掩碼&gt;</span><br><span class="line">Gateway=&lt;網關IP地址&gt;</span><br><span class="line">DNS=&lt;DNS IP地址&gt;</span><br><span class="line"><span class="comment"># 其中，&lt;IP地址&gt;是你要為該網卡設置的IP地址，&lt;子網掩碼&gt;是對應的子網掩碼，&lt;網關IP地址&gt;是你的路由器或網關的IP地址，&lt;DNS IP地址&gt;是你的DNS服務器的IP地址。</span></span><br><span class="line"><span class="comment"># 例如，要為eth0網卡設置IP地址192.168.1.100，子網掩碼255.255.255.0，並設置預設網關為192.168.1.1，DNS為8.8.8.8，則編輯文件內容如下：</span></span><br><span class="line">[Match]</span><br><span class="line">Name=eth0</span><br><span class="line"></span><br><span class="line">[Network]</span><br><span class="line">Address=192.168.1.100/24</span><br><span class="line">Gateway=192.168.1.1</span><br><span class="line">DNS=8.8.8.8</span><br></pre></td></tr></table></figure></li>
+<li><p>保存文件並退出編輯器。</p>
+</li>
+<li><p>重新啟動systemd-networkd服務，以應用新的配置：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart systemd-networkd</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>作者： </strong>ValorVie
+  </li>
+  <li class="post-copyright-link">
+      <strong>文章連結：</strong>
+      <a href="https://valorvie.github.net/2023/04/14/Linux-Network%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/" title="Linux Network網路設定">https://valorvie.github.net/2023/04/14/Linux-Network網路設定/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Network/" rel="tag"># Network</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/04/12/%E7%AD%86%E8%A8%98%E5%88%86%E9%A1%9E/" rel="prev" title="筆記分類">
+                  <i class="fa fa-chevron-left"></i> 筆記分類
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ValorVie</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>總字數：</span>
+    <span title="總字數">16k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>所需總閱讀時間 &asymp;</span>
+    <span title="所需總閱讀時間">15 分鐘</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
